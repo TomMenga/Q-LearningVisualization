@@ -42,7 +42,7 @@ class QLearning:
         x = self.__currentTurn[0]
         y = self.__currentTurn[1]
         action = self.__currentTurn[2]
-        self.matrix[x, y][action] = reward + AppConfig.GAMMA * self.__getMaxQ(nextState)
+        self.matrix[x, y][action] = AppConfig.ALPHA * reward + AppConfig.GAMMA * self.__getMaxQ(nextState)
         print("Reward for action: " + str(reward))
         self.__print_matrix()
 
