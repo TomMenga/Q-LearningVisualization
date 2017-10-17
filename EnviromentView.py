@@ -3,6 +3,7 @@ from tkinter import *
 from StateView import StateView
 from AgentView import AgentView
 from ControlManager import ControlManager
+import AppConfig
 import time
 
 
@@ -43,14 +44,22 @@ class EnviromentView:
         self.__agentView.move()
 
     def start(self):
-        #ControlManager(self.__windowRoot, self.flow)
-        print("hello")
-        while True:
-            self.flow()
-            self.__windowRoot.update()
-            time.sleep(3)
-        #self.__windowRoot.mainloop()
+        if AppConfig.START_MODE == "auto":
+            self.__start_automatic()
+        else:
+            self.__start_by_click()
 
-    def flow(self):
+    def __start_by_click(self):
+        ControlManager(self.__windowRoot, self.flow)
+        self.__windowRoot.mainloop()
+
+    def __start_automatic(self):
+        while True:
+            self.flow(None)
+            self.__windowRoot.update()
+            time.sleep(AppConfig.SPEED)
+        self.__windowRoot.mainloop()
+
+    def flow(self, event):
         self.__agentControl.choose_action()
         self.move_agent()
