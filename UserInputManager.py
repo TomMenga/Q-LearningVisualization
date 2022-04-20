@@ -1,7 +1,7 @@
 from msvcrt import getch
 
 
-class ControlManager:
+class UserInputManager:
 
     def __init__(self, windowsRoot, action):
         self.__subscribe_button(windowsRoot, action)

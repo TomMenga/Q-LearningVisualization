@@ -2,7 +2,7 @@ from tkinter import *
 
 from StateView import StateView
 from AgentView import AgentView
-from ControlManager import ControlManager
+from UserInputManager import UserInputManager
 import AppConfig
 import time
 
@@ -50,7 +50,7 @@ class EnviromentView:
             self.__start_by_click()
 
     def __start_by_click(self):
-        ControlManager(self.__windowRoot, self.flow)
+        UserInputManager(self.__windowRoot, self.flow)
         self.__windowRoot.mainloop()
 
     def __start_automatic(self):
